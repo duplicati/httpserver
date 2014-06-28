@@ -22,6 +22,12 @@ namespace HttpServer.FormDecoders
         /// form-data
         /// </summary>
         public const string FormData = "form-data";
+
+        /// <summary>
+        /// Gets the temp folder used to store multi-part uploads
+        /// </summary>
+        public static readonly string Tempfolder = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "HttpServer");
+
         #region IFormDecoder Members
 
         /// <summary>
@@ -73,11 +79,7 @@ namespace HttpServer.FormDecoders
 
 					// Generate a filename
 					string filename = element.Filename;
-                    string internetCache = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
-                    // if the internet path doesn't exist, assume mono and /var/tmp
-                    string path = string.IsNullOrEmpty(internetCache)
-				               ? Path.Combine("var", "tmp")
-				               : Path.Combine(internetCache.Replace("\\\\", "\\"), "tmp");
+                    string path = Tempfolder;
                     element.Filename = Path.Combine(path, Math.Abs(element.Filename.GetHashCode()) + ".tmp");
 
 					// If the file exists generate a new filename

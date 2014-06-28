@@ -476,15 +476,17 @@ namespace HttpServer
                 _components.AddInstance<IHttpContextFactory>(new HttpContextFactory(LogWriter, 16384,
                                                                                     _components.Get<IRequestParserFactory>()));
 
-			// the special folder does not exist on mono
-			string tempPath = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
-			if (string.IsNullOrEmpty(tempPath))
-				tempPath = "/var/tmp/";
+            string tempPath = System.IO.Path.GetTempPath();
 			if (!Directory.Exists(tempPath))
 			{
 				WriteLog(this, LogPrio.Warning, "Temp path do not exist: " + tempPath);
 				return;
 			}
+
+            tempPath = MultipartDecoder.Tempfolder;
+            if (!Directory.Exists(tempPath))
+                Directory.CreateDirectory(tempPath);
+
 			DirectoryInfo info = new DirectoryInfo(tempPath);
 			foreach (FileInfo file in info.GetFiles("*.tmp"))
 				file.Delete();
