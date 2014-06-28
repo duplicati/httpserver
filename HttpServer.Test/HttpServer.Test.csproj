@@ -1,0 +1,153 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73942CF7-F838-407B-B6DC-530A2A7C41E7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HttpServer.Test</RootNamespace>
+    <AssemblyName>HttpServer.Test</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TEST</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fadd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=41411ef5f05a116f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\Fadd.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="xunit, Version=1.0.2.1283, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\xunit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\BasicAuthTest.cs" />
+    <Compile Include="Authentication\DigestAuthTest.cs" />
+    <Compile Include="Controllers\ControllerTester.cs" />
+    <Compile Include="Controllers\MyController.cs" />
+    <Compile Include="Controllers\MyStream.cs" />
+    <Compile Include="Controllers\RequestControllerTest.cs" />
+    <Compile Include="Exceptions\HttpExceptionTest.cs" />
+    <Compile Include="FormDecoders\DecoderProviderTest.cs" />
+    <Compile Include="FormDecoders\MultipartDecoderTest.cs" />
+    <Compile Include="FormDecoders\MyDefaultDecoder.cs" />
+    <Compile Include="FormDecoders\UrlDecoderTest.cs" />
+    <Compile Include="FormDecoders\XmlDecoderTest.cs" />
+    <Compile Include="Helpers\FormHelperTest.cs" />
+    <Compile Include="Helpers\FormValidatorTest.cs" />
+    <Compile Include="Helpers\PrototypeTest.cs" />
+    <Compile Include="Helpers\ResourceManagerTest.cs" />
+    <Compile Include="Helpers\XmlHelperTest.cs" />
+    <Compile Include="HttpClientContextTest.cs" />
+    <Compile Include="HttpContext.cs" />
+    <Compile Include="HttpCookieTest.cs" />
+    <Compile Include="HttpFileTest.cs" />
+    <Compile Include="HttpFormTest.cs" />
+    <Compile Include="HTTPHelperTest.cs" />
+    <Compile Include="HttpInputItemTest.cs" />
+    <Compile Include="HttpInputTest.cs" />
+    <Compile Include="HttpListenerTest.cs" />
+    <Compile Include="HttpModules\ControllerModuleTest.cs" />
+    <Compile Include="HttpModules\FileModuleTest.cs" />
+    <Compile Include="HttpModules\ProxyTestModule.cs" />
+    <Compile Include="HttpModules\ResourceFileModuleTest.cs" />
+    <Compile Include="HttpModules\ReverseProxyTest.cs" />
+    <Compile Include="HttpModules\TestController.cs" />
+    <Compile Include="HTTPRequestParserTest.cs" />
+    <Compile Include="HttpRequestTest.cs" />
+    <Compile Include="HttpServerLoadTests.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegexRedirectRuleTest.cs" />
+    <Compile Include="Renderers\AttributeNodeTester.cs" />
+    <Compile Include="Renderers\HamlTest.cs" />
+    <Compile Include="Renderers\PartialNodeTest.cs" />
+    <Compile Include="Renderers\ResourceManagerTest.cs" />
+    <Compile Include="Renderers\ResourceTemplateLoaderTest.cs" />
+    <Compile Include="Renderers\TagNodeTest.cs" />
+    <Compile Include="Renderers\TemplateArgumentsTest.cs" />
+    <Compile Include="Renderers\TemplateManagerTest.cs" />
+    <Compile Include="Renderers\TinyTest.cs" />
+    <Compile Include="TestHelpers\HttpResponseContext.cs" />
+    <Compile Include="TestHelpers\HttpTestRequest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HttpModules\TextFile1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HttpModules\Forbidden.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Renderers\HamlSamples\code3.haml" />
+    <None Include="Renderers\HamlSamples\CodeSample.haml" />
+    <None Include="Renderers\HamlSamples\small.haml" />
+    <None Include="Renderers\HamlSamples\Test1.haml" />
+    <None Include="Renderers\HamlSamples\Test2.haml" />
+    <None Include="Renderers\HamlSamples\Test3.haml" />
+    <None Include="Renderers\HamlSamples\TestLayout.haml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HttpServer.MVC\HttpServer.MVC.csproj">
+      <Project>{183517F9-06E6-4C06-A6F2-D5A98B440F34}</Project>
+      <Name>HttpServer.MVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HttpServer\HttpServer.csproj">
+      <Project>{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}</Project>
+      <Name>HttpServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Helpers\ResourceFiles\test-test.xml" />
+    <EmbeddedResource Include="Helpers\ResourceFiles\test.test.txt" />
+    <EmbeddedResource Include="Helpers\ResourceFiles\test.test.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>xcopy /s /y "$(ProjectDir)\Renderers\HamlSamples" "$(TargetDir)\HamlSamples\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

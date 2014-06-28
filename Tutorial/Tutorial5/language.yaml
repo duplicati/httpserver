@@ -1,0 +1,64 @@
+1053: Swedish
+	Login: Logga in
+	Save: Spara
+	Welcome: Välkommen
+	User: Användare
+		UserName: Användarnamn
+		Password: Lösenord
+		FirstName: Förnamn
+		LastName: Efternamn
+		Main: Huvudsida
+			Settings: Inställningar
+		Settings: Inställningar.
+	Validation:
+		Between: '{0}' måste vara mellan {1} och {2}
+		BetweenString: '{0}' måste vara mellan {1} och {2} tecken
+		Required: Fältet '{0}' är obligatoriskt
+		LettersAndDigits: '{0}' får endast innehålla siffor och bokstäver.
+	Validator:
+		Required: Fältet '{0}' är obligatoriskt.
+		Integer: '{0}' måste vara ett heltal.
+		Email: '{0}' är inte en giltig epostaddress.
+		Date: '{0}' är inte ett korrekt datum.
+		Time: '{0}' är inte en korrekt tid.
+		LettersOrDigits: '{0}' får bara innehålla siffror och bokstäver.
+		LettersOrDigitsExtra: '{0}' får bara innehålla siffror och bokstäver samt följande tecken: {1}.
+		Password: '{0}' får bara innehålla siffror, bokstäver och följande tecken: {1}
+		Number: Fältet '{0}' får endast innehålla siffror.
+		LettersSpecial: Fältet '{0}' innehåller otillåtna tecken.
+		Hex: Fältet '{0}' ska innehålla ett HEX tal (dvs endast 0-9 och A-F). Se även <a href="http://sv.wikipedia.org/wiki/Hexadecimal" target="_new">wikipedia</a>.
+		AlphaNumeric: '{0}' får endast innehålla siffror och bokstäver.
+		Digits: '{0}' får endast innehålla siffror. 
+		DigitsExtra: '{0}' får endast innehålla siffror och följande tecken: '{1}'.
+1033: English
+	Login: Login
+	Save: Save
+	Welcome: Welcome
+	User: User
+		UserName: Username
+		Password: Password
+		FirstName: Firstname
+		LastName: LastName
+		Main: Main page
+		Settings: Settings
+	Validation:
+		Between: '{0}' must be between {1} and {2}
+		BetweenString: '{0}' must be between {1} and {2} characters
+		Required: '{0}' is mandatory
+		LettersAndDigits: '{0}' may only contain letters and digits.
+	Validator:
+		Required: '{0}' is mandatory.
+		Integer: '{0}' must be a positive number.
+		Email: '{0}' is not a valid email address.
+		Date: '{0}' is not a correct date.
+		Time: '{0}' is not a correct time.
+		LettersOrDigits: '{0}' may only contain letters and digits.
+		LettersOrDigitsExtra: '{0}' may only contain letters, digits and any of the following characters: {1}.
+		Password: '{0}' may only contain letters, digits and any of the following characters: {1}
+		Number: '{0}' may only contain numbers.
+		LettersSpecial: '{0}' contains forbidden characters.
+		Hex: Fältet '{0}' may only contain HEX numbers (0-9 and A-F)
+		AlphaNumeric: '{0}' may only contain writable characters.
+		Digits: '{0}' may only contain digits. 
+		DigitsExtra: '{0}' may only contain digits and any of the following characters: '{1}'.
+			

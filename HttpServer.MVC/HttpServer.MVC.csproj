@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{183517F9-06E6-4C06-A6F2-D5A98B440F34}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HttpServer.MVC</RootNamespace>
+    <AssemblyName>HttpServer.MVC</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>test.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fadd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=41411ef5f05a116f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\Fadd.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControllerModule.cs" />
+    <Compile Include="Controllers\AuthRequiredAttribute.cs" />
+    <Compile Include="Controllers\AuthenticationValidatorAttribute.cs" />
+    <Compile Include="Controllers\BeforeFilter.cs" />
+    <Compile Include="Controllers\ControllerNameAttribute.cs" />
+    <Compile Include="Controllers\RawHandlerAttribute.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\ViewController.cs" />
+    <Compile Include="FormValidator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\CodeGeneratorException.cs" />
+    <Compile Include="Rendering\FileTemplateLoader.cs" />
+    <Compile Include="Rendering\Haml\HamlGenerator.cs" />
+    <Compile Include="Rendering\Haml\LineInfo.cs" />
+    <Compile Include="Rendering\Haml\NodeList.cs" />
+    <Compile Include="Rendering\Haml\Nodes\AttributeNode.cs" />
+    <Compile Include="Rendering\Haml\Nodes\ChildNode.cs" />
+    <Compile Include="Rendering\Haml\Nodes\ClassNode.cs" />
+    <Compile Include="Rendering\Haml\Nodes\DisplayCodeNode.cs" />
+    <Compile Include="Rendering\Haml\Nodes\DocTypeTag.cs" />
+    <Compile Include="Rendering\Haml\Nodes\IdNode.cs" />
+    <Compile Include="Rendering\Haml\Nodes\Node.cs" />
+    <Compile Include="Rendering\Haml\Nodes\PartialNode.cs" />
+    <Compile Include="Rendering\Haml\Nodes\SilentCodeNode.cs" />
+    <Compile Include="Rendering\Haml\Nodes\TagNode.cs" />
+    <Compile Include="Rendering\Haml\Nodes\TextNode.cs" />
+    <Compile Include="Rendering\Haml\Rules\AttributesRule.cs" />
+    <Compile Include="Rendering\Haml\Rules\NewLineRule.cs" />
+    <Compile Include="Rendering\Haml\Rules\Rule.cs" />
+    <Compile Include="Rendering\ITemplateGenerator.cs" />
+    <Compile Include="Rendering\ITemplateInfo.cs" />
+    <Compile Include="Rendering\ITemplateLoader.cs" />
+    <Compile Include="Rendering\ITinyTemplate.cs" />
+    <Compile Include="Rendering\ResourceTemplateLoader.cs" />
+    <Compile Include="Rendering\TemplateArguments.cs" />
+    <Compile Include="Rendering\TemplateCompiler.cs" />
+    <Compile Include="Rendering\TemplateException.cs" />
+    <Compile Include="Rendering\TemplateManager.cs" />
+    <Compile Include="Rendering\Tiny\TinyGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Rendering\Haml\resourcetest2.haml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Rendering\resourcetest.haml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Rendering\resourcetest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HttpServer\HttpServer.csproj">
+      <Project>{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}</Project>
+      <Name>HttpServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="httpserver.pfx" />
+    <None Include="test.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

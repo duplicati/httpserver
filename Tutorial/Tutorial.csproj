@@ -1,0 +1,100 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C379A635-DBED-4E0D-AB9A-D9B1AE9B6512}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tutorial</RootNamespace>
+    <AssemblyName>Tutorial</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fadd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=41411ef5f05a116f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\Fadd.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tutorial.cs" />
+    <Compile Include="Tutorial1\Tutorial1.cs" />
+    <Compile Include="Tutorial2\Tutorial2.cs" />
+    <Compile Include="Tutorial3\MyModule.cs" />
+    <Compile Include="Tutorial3\Tutorial3.cs" />
+    <Compile Include="Tutorial4\Tutorial4.cs" />
+    <Compile Include="Tutorial5\Controllers\ApplicationController.cs" />
+    <Compile Include="Tutorial5\Controllers\UserController.cs" />
+    <Compile Include="Tutorial5\Models\User.cs" />
+    <Compile Include="Tutorial5\Tutorial5.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HttpServer.MVC\HttpServer.MVC.csproj">
+      <Project>{183517F9-06E6-4C06-A6F2-D5A98B440F34}</Project>
+      <Name>HttpServer.MVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HttpServer\HttpServer.csproj">
+      <Project>{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}</Project>
+      <Name>HttpServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tutorial5\language.yaml" />
+    <EmbeddedResource Include="Tutorial5\views\user\ajaxdeluxe.haml" />
+    <EmbeddedResource Include="Tutorial5\views\user\info.haml" />
+    <EmbeddedResource Include="Tutorial5\views\layouts\application.haml" />
+    <EmbeddedResource Include="Tutorial5\views\user\main.haml" />
+    <EmbeddedResource Include="Tutorial5\views\user\login.haml" />
+    <EmbeddedResource Include="Tutorial5\views\user\settings.haml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tutorial5\public\javascripts\prototype.js" />
+    <EmbeddedResource Include="Tutorial5\public\stylesheets\application.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tutorial5\public\images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

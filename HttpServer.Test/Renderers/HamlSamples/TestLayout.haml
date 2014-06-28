@@ -1,0 +1,49 @@
+!!!
+%html{ xmlns = "http://www.w3.org/1999/xhtml" }
+	%head
+		%meta{ http-equiv ="Content-Type", content = "text/html; charset=utf-8" }
+		%title gauffintelecom.se
+		%link{ href = "/stylesheets/main.css", rel = "stylesheet", type = "text/css" }
+		%link{ href = "/stylesheets/form.css", rel = "stylesheet", type = "text/css" }
+		%link{ href = "/stylesheets/tabs.css", rel = "stylesheet", type = "text/css" }
+		%link{ href = "/stylesheets/datePicker.css", rel = "stylesheet", type = "text/css" }
+		%link{ href = "/stylesheets/table.css", rel = "stylesheet", type = "text/css" }
+		%link{ href = "/stylesheets/cmxforms.css", rel = "stylesheet", type = "text/css" }
+		%link{ href = "/stylesheets/jqModal.css", rel = "stylesheet", type = "text/css" }		
+		%script{ src = "/javascripts/jquery.css", type = "text/javascript" }
+		%script{ type="text/javascript" }
+			$(function() { 
+			Date.firstDayOfWeek = 1;
+			Date.format = 'yyyy-mm-dd';		  
+			var open=function(hash){ hash.w.css('opacity',0.88).show(); };
+			var close=function(hash) { hash.o.fadeOut('1500'); hash.w.fadeOut('1500'); };
+			$().ready(function() {
+			$('#dialog').jqm({
+			onShow: open,
+			onHide: close})});
+	%body
+		%script{src="/javascripts/wz_tooltip.js", type="text/javascript"}
+		#wrap
+			#top
+				%ul{ class = "lavaLampNoImage"}
+					%li#active
+						%a{href="/main/"} Startsida
+					%li
+						%a{href="/voicemails/"} Meddelanden
+					%li
+						%a{href="/presence/index/"} Frånvaro
+					%li
+						%a{href="/users/"} Katalog
+					%li
+						%a{href="/settings/"} Inställningar
+				%img{ src="/images/main_logo.gif", alt="Gauffin Telecom", width="196", height="65" }
+			#main
+				= data
+			#foot
+				#img{src="/images/footer_line.gif", alt="", width="950", height="1"}
+				%div{ style="float: right;" }
+				- if (true)
+					%a{href="/main/logout/"} Logga ut
+			- if (true) /*defined? @bottom_menu and @bottom_menu.length > 0*/
+				- for (int i = 0; i < 10; ++i)
+					%a{ href = i }= "Welcome"

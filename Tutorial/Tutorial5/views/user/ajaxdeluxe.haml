@@ -1,0 +1,12 @@
+%h1 Ajax deluxe!
+%p
+	%select#users{name="users"}
+	%input{type="button", onclick=JSHelper.AjaxUpdater("'/user/ajaxdeluxe'", "users"), value="&lt;-- load using ajax"}
+
+%h2 Info page
+%p
+	%a{href="/user/info"} Visit page normally (and get it rendered in the layout)
+	= " | "
+	= WebHelper.AjaxUpdater("/user/info", "Load it below:", "info")
+
+#info
