@@ -134,6 +134,7 @@
     <Compile Include="Sessions\MemorySessionStore.cs" />
     <Compile Include="Templates\SmartyEngine.cs" />
     <Compile Include="Templates\TemplateEngine.cs" />
+    <Compile Include="HttpUtilityHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

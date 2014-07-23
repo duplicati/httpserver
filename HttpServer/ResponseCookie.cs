@@ -70,7 +70,7 @@ namespace HttpServer
         /// <returns>cookie string</returns>
         public override string ToString()
         {
-            string temp = string.Format("{0}={1}; ", HttpUtility.UrlEncode(Name), HttpUtility.UrlEncode(Value));
+            string temp = string.Format("{0}={1}; ", HttpUtilityHelper.UrlEncode(Name), HttpUtilityHelper.UrlEncode(Value));
             if (_persistant)
             {
 				// Fixed by Albert, Team MediaPortal

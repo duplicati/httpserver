@@ -54,12 +54,12 @@ namespace HttpServer
                     _queryString = HttpHelper.ParseQueryString(_uriPath.Substring(pos + 1));
                     _param.SetQueryString(_queryString);
                 	string path = _uriPath.Substring(0, pos);
-                	_uriPath = System.Web.HttpUtility.UrlDecode(path) + "?" + _uriPath.Substring(pos + 1);
+                	_uriPath = HttpUtilityHelper.UrlDecode(path) + "?" + _uriPath.Substring(pos + 1);
                     UriParts = value.Substring(0, pos).Split(UriSplitters, StringSplitOptions.RemoveEmptyEntries);
                 }
                 else
                 {
-					_uriPath = System.Web.HttpUtility.UrlDecode(_uriPath);
+					_uriPath = HttpUtilityHelper.UrlDecode(_uriPath);
 					UriParts = value.Split(UriSplitters, StringSplitOptions.RemoveEmptyEntries);
 				}
             }

@@ -165,7 +165,7 @@ namespace HttpServer
 
         private static void Add(IHttpInput input, string name, string value)
         {
-            input.Add(HttpUtility.UrlDecode(name), HttpUtility.UrlDecode(value));
+            input.Add(HttpUtilityHelper.UrlDecode(name), HttpUtilityHelper.UrlDecode(value));
         }
     }
 }

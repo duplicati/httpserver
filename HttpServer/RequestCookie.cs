@@ -37,7 +37,7 @@ namespace HttpServer
         /// <returns>cookie string</returns>
         public override string ToString()
         {
-            return string.Format("{0}={1}; ", HttpUtility.UrlEncode(_name), HttpUtility.UrlEncode(_value));
+            return string.Format("{0}={1}; ", HttpUtilityHelper.UrlEncode(_name), HttpUtilityHelper.UrlEncode(_value));
         }
 
         #endregion
