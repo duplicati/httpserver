@@ -120,10 +120,12 @@ namespace HttpServer.HttpModules
         {
             if (Contains(uri.AbsolutePath, _forbiddenChars))
                 return false;
-
+            
+            if (!uri.AbsolutePath.StartsWith(_baseUri))
+                return false;
+            
             string path = GetPath(uri);
             return
-                uri.AbsolutePath.StartsWith(_baseUri) && // Correct directory
                 File.Exists(path) && // File exists
                 (File.GetAttributes(path) & FileAttributes.ReparsePoint) == 0; // Not a symlink
         }
