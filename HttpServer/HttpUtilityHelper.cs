@@ -3,12 +3,15 @@ using System.Collections.Specialized;
 
 namespace HttpServer
 {
+    /// <summary>
+    /// Method for providing some functions missing in System.Web
+    /// </summary>
     public static class HttpUtilityHelper
     {
         /// <summary>
         /// The regular expression that matches %20 type values in a querystring
         /// </summary>
-        private static System.Text.RegularExpressions.Regex RE_ESCAPECHAR = new System.Text.RegularExpressions.Regex(@"[^0-9a-zA-Z]", System.Text.RegularExpressions.RegexOptions.Compiled);
+        private static System.Text.RegularExpressions.Regex RE_ESCAPECHAR = new System.Text.RegularExpressions.Regex(@"[^0-9a-zA-Z\-\_]", System.Text.RegularExpressions.RegexOptions.Compiled);
         
         /// <summary>
         /// Encodes a URL, like System.Web.HttpUtility.UrlEncode
@@ -20,17 +23,7 @@ namespace HttpServer
         {
             return UrlEncode(value, encoding, "%20");
         }
-
-        /// <summary>
-        /// Converts a sequence of bytes to a hex string
-        /// </summary>
-        /// <returns>The array as hex string.</returns>
-        /// <param name="data">The data to convert</param>
-        private static string ByteArrayAsHexString(byte[] data)
-        {
-            return BitConverter.ToString(data).Replace("-", string.Empty);
-        }
-
+            
         /// <summary>
         /// Converts a hex string to a byte array
         /// </summary>
@@ -61,9 +54,8 @@ namespace HttpServer
 
             var encoder = encoding.GetEncoder();
             var inbuf = new char[1];               
-            var outbuf = new byte[2];
-            var shortout = new byte[1];
-            
+            var outbuf = new byte[4];
+
             return RE_ESCAPECHAR.Replace(value, (m) => {
                 if (m.Value == " ")
                     return spacevalue;
@@ -73,13 +65,7 @@ namespace HttpServer
                 try 
                 {
                     var len = encoder.GetBytes(inbuf, 0, 1, outbuf, 0, true);
-                    if (len == 1)
-                    {
-                        shortout[0] = outbuf[0];
-                        return "%" + ByteArrayAsHexString(shortout).ToLower();
-                    }
-                    else if (len == 2)
-                        return "%u" + ByteArrayAsHexString(outbuf).ToLower();
+                    return "%" + BitConverter.ToString(outbuf, 0, len).Replace("-", "%");
                 }
                 catch
                 {
@@ -94,18 +80,13 @@ namespace HttpServer
         /// <summary>
         /// The regular expression that matches %20 type values in a querystring
         /// </summary>
-        private static System.Text.RegularExpressions.Regex RE_NUMBER = new System.Text.RegularExpressions.Regex(@"(\%(?<number>([0-9]|[a-z]|[A-Z]){2}))|(\+)|(\%u(?<number>([0-9]|[a-z]|[A-Z]){4}))", System.Text.RegularExpressions.RegexOptions.Compiled);
-
-        /// <summary>
-        /// A helper for converting byte arrays to hex, vice versa
-        /// </summary>
-        private const string HEX_DIGITS_UPPER = "0123456789ABCDEF";
+        private static System.Text.RegularExpressions.Regex RE_NUMBER = new System.Text.RegularExpressions.Regex(@"(\%(?<number>([0-9]|[a-f]|[A-F]){2}))|(\+)|(\%u(?<number>([0-9]|[a-f]|[A-F]){2,4,6,8}))", System.Text.RegularExpressions.RegexOptions.Compiled);
 
         /// <summary>
         /// Encodes a URL, like System.Web.HttpUtility.UrlEncode
         /// </summary>
         /// <returns>The decoded URL</returns>
-        /// <param name="url">The URL fragment to decode</param>
+        /// <param name="value">The URL fragment to decode</param>
         /// <param name="encoding">The encoding to use</param>
         public static string UrlDecode(string value, System.Text.Encoding encoding = null)
         {
@@ -115,20 +96,20 @@ namespace HttpServer
             encoding = encoding ?? System.Text.Encoding.UTF8;
                 
             var decoder = encoding.GetDecoder();
-            var inbuf = new byte[2];
+            var inbuf = new byte[4];
             var outbuf = new char[1];
             
-            return RE_NUMBER.Replace(value, (m) => { 
+            return RE_NUMBER.Replace(value, (m) => {
                 if (m.Value == "+")
                     return " ";
 
                 try
                 {
                     var hex = m.Groups["number"].Value;
+                    var bytelen = hex.Length / 2;
                     HexStringAsByteArray(hex, inbuf);
-                                 
-                    decoder.GetChars(inbuf, 0, hex.Length / 2, outbuf, 0); 
-                    return outbuf[0].ToString();
+                    var c = decoder.GetChars(inbuf, 0, bytelen, outbuf, 0); 
+                    return new string(outbuf, 0, c);
                 }
                 catch
                 {
