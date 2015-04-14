@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer", "HttpServer\HttpServer.csproj", "{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer_Test", "HttpServer_Test\HttpServer_Test.csproj", "{C3CC0769-9814-4896-8599-9EB0B807E785}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,12 @@ Global
 		{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}.Test|Any CPU.ActiveCfg = Test|Any CPU
 		{455E7D70-1C85-4D7F-9F01-DC801B8B8C34}.Test|Any CPU.Build.0 = Test|Any CPU
+		{C3CC0769-9814-4896-8599-9EB0B807E785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3CC0769-9814-4896-8599-9EB0B807E785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3CC0769-9814-4896-8599-9EB0B807E785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3CC0769-9814-4896-8599-9EB0B807E785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3CC0769-9814-4896-8599-9EB0B807E785}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{C3CC0769-9814-4896-8599-9EB0B807E785}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
